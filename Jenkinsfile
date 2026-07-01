@@ -12,14 +12,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo "No build required for static website"
+                echo 'Frontend build completed'
             }
         }
 
         stage('Deploy') {
             steps {
                 sh '''
-                    cp -r index.html style.css /var/www/html/
+                    mkdir -p deploy
+                    cp index.html style.css deploy/
                 '''
             }
         }
