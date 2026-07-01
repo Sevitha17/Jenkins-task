@@ -3,6 +3,13 @@ pipeline {
 
     stages {
 
+        stage('Clone Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Sevitha17/Jenkins-task.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo "No build required for static website"
@@ -12,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    sudo cp -r * /var/www/html/
+                    cp -r index.html style.css /var/www/html/
                 '''
             }
         }
